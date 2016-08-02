@@ -672,7 +672,11 @@ namespace ts {
         // If the candidate already has an extension load that or quit.
         if (hasTypeScriptFileExtension(candidate)) {
             // Don't allow `.ts` to appear at the end
-            if (!fileExtensionIs(candidate, ".d.ts")) {
+            //if (!fileExtensionIs(candidate, ".d.ts")) {
+            //    return undefined;
+            //}
+            if (1) {
+                if ((<any>candidate).includes("jquery")) throw new Error("Boo");
                 return undefined;
             }
             return tryFile(candidate, failedLookupLocation, onlyRecordFailures, state);
@@ -711,6 +715,7 @@ namespace ts {
     }
 
     /** Return the file if it exists. */
+    //dafuq? onlyRecordFailures implies that we fail every time!!!
     function tryFile(fileName: string, failedLookupLocation: string[], onlyRecordFailures: boolean, state: ModuleResolutionState): string | undefined {
         if (!onlyRecordFailures && state.host.fileExists(fileName)) {
             if (state.traceEnabled) {

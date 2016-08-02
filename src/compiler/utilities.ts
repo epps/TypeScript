@@ -2723,12 +2723,14 @@ namespace ts {
     }
 
     export function hasTypeScriptFileExtension(fileName: string) {
+        //TODO: if it doesn't have a '.ts' extension, it won't have '.d.ts' either...
         return forEach(supportedTypeScriptExtensions, extension => fileExtensionIs(fileName, extension));
     }
 
     /** Return ".ts" or ".tsx" if that is the extension. */
-    export function tryExtractTypeScriptExtensionNonDts(fileName: string): string | undefined {
-        return find(supportedTypeScriptExtensionsNonDts, extension => fileExtensionIs(fileName, extension));
+    export function tryExtractTypeScriptExtension(fileName: string): string | undefined {
+        //can't use `supportedTypescriptExtensions` because that puts ".d.ts" last
+        return find([".d.ts", ".ts", ".tsx"], extension => fileExtensionIs(fileName, extension));
     }
 
     /**

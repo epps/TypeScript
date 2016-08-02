@@ -1,5 +1,5 @@
-tests/cases/compiler/user.ts(4,15): error TS2691: An import path should not end with a '.ts' extension. Consider importing './x' instead.
-tests/cases/compiler/user.ts(5,15): error TS2691: An import path should not end with a '.tsx' extension. Consider importing './y' instead.
+tests/cases/compiler/user.ts(4,15): error TS2691: An import path cannot end with a '.ts' extension. Consider importing './x' instead.
+tests/cases/compiler/user.ts(5,15): error TS2691: An import path cannot end with a '.tsx' extension. Consider importing './y' instead.
 
 
 ==== tests/cases/compiler/user.ts (2 errors) ====
@@ -8,10 +8,10 @@ tests/cases/compiler/user.ts(5,15): error TS2691: An import path should not end 
     
     import x from "./x.ts";
                   ~~~~~~~~
-!!! error TS2691: An import path should not end with a '.ts' extension. Consider importing './x' instead.
+!!! error TS2691: An import path cannot end with a '.ts' extension. Consider importing './x' instead.
     import y from "./y.tsx";
                   ~~~~~~~~~
-!!! error TS2691: An import path should not end with a '.tsx' extension. Consider importing './y' instead.
+!!! error TS2691: An import path cannot end with a '.tsx' extension. Consider importing './y' instead.
     
     // Making sure the suggested fixes are valid:
     import x2 from "./x";
